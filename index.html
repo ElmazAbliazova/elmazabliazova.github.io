@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elmaz Abliazova - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .portfolio-text {
+            font-size: 8rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            text-transform: lowercase;
+            color: #fff;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 4rem;
+            color: #ff4444;
+            margin-top: -3rem;
+            margin-left: 2rem;
+        }
+
+        /* Photo Collage */
+        .photo-collage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-photo {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border: 8px solid #fff;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-photo:hover {
+            transform: scale(1.05) !important;
+        }
+
+        .photo-1 {
+            top: 15%;
+            left: 15%;
+            transform: rotate(-8deg);
+        }
+
+        .photo-2 {
+            top: 25%;
+            right: 15%;
+            transform: rotate(5deg);
+        }
+
+        .photo-3 {
+            bottom: 15%;
+            left: 20%;
+            transform: rotate(3deg);
+        }
+
+        .icons {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .icon-3d { top: 10%; left: 10%; }
+        .icon-measure { bottom: 20%; left: 15%; }
+        .icon-gear1 { top: 15%; right: 15%; }
+        .icon-gear2 { top: 25%; right: 10%; }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            z-index: 3;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 20px solid #fff;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            min-height: 100vh;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+        }
+
+        .about-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .about h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #ccc;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: 3px solid #fff;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.2);
+        }
+
+        /* Projects Section */
+        .projects {
+            min-height: 100vh;
+            padding: 100px 20px;
+            background: #000;
+        }
+
+        .projects h1 {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .projects-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            padding: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #fff;
+            box-shadow: 0 15px 40px rgba(255,255,255,0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #ff4444;
+        }
+
+        .project-card h4 {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-card p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #ff4444;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Project Gallery */
+        .project-gallery {
+            width: 100%;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background: #0a0a0a;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: #ff4444;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .portfolio-text {
+                font-size: 4rem;
+            }
+            .signature {
+                font-size: 2rem;
+                margin-top: -1.5rem;
+            }
+            .about h1, .projects h1 {
+                font-size: 2.5rem;
+            }
+            .about p {
+                font-size: 1.1rem;
+            }
+            .icons {
+                font-size: 2rem;
+            }
+            .hero-photo {
+                width: 200px;
+                height: 250px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .photo-collage {
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="icons icon-3d">🖨️</div>
+        <div class="icons icon-measure">📏</div>
+        <div class="icons icon-gear1">⚙️</div>
+        <div class="icons icon-gear2">⚙️</div>
+        
+        <div class="photo-collage">
+            <!-- Note: Replace these src values with your actual image paths when uploading to GitHub -->
+            <img src="hero-photo.jpg" alt="Elmaz in the city" class="hero-photo photo-1">
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="portfolio-text">portfolio</h1>
+            <div class="signature">Elmaz Abliazova</div>
+        </div>
+        
+        <div class="scroll-indicator" onclick="scrollToAbout()">
+            <p>Scroll Down</p>
+            <div class="arrow-down"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h1>About Me</h1>
+            <p>I'm a second-year Biomedical Engineering student at Case Western Reserve University on the Biomechanics track, with a particular interest in prosthetics and orthotics.</p>
+            <p>I currently work at the Sears think[box] Makerspace, where I gain hands-on experience in design and fabrication while also training and teaching others to use the equipment safely and effectively.</p>
+            <p>I'm choosing a path at the intersection of engineering and medicine, but my curiosity constantly pushes me to explore far beyond it.</p>
+            
+            <div class="button-group">
+                <button class="btn" onclick="scrollToProjects()">Projects</button>
+                <a class="btn" href="#" target="_blank">Resume</a>
+                <a class="btn" href="https://www.linkedin.com/in/elmaz-abliazova/" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h1>Projects</h1>
+        <div class="projects-grid">
+            <!-- Emergency Stretcher -->
+            <div class="project-card">
+                <img src="stretcher.jpg" alt="Emergency Stretcher CAD" class="project-image">
+                <div class="project-content">
+                    <h3>Foldable, Lightweight Emergency Stretcher</h3>
+                    <p>Developed a portable emergency stretcher designed for war zones and destruction areas. The design is mainly focused on optimizing portability and light weight.</p>
+                    <h4>Structurally Optimized Crossbars</h4>
+                    <p>Performed topological analysis and redesign to create crossbars that minimize weight while maintaining high strength and rigidity under patient load.</p>
+                    <h4>Telescoping Frame With Locking Pins</h4>
+                    <p>Engineered a compact, extendable mechanism that reduces overall storage size. Integrated secure mechanical locking pins to ensure stability during transport and enable quick assembly.</p>
+                    <p style="margin-top: 20px; font-style: italic; color: #888;">Group Project for Mechanical Manufacturing Class</p>
+                </div>
+            </div>
+
+            <!-- Vaccine Carrier -->
+            <div class="project-card">
+                <img src="vaccine-carrier.jpg" alt="Vaccine Carrier Prototype" class="project-image">
+                <div class="project-content">
+                    <h3>Redesigned Vaccine Carrier</h3>
+                    <p>Minimizing Cold Chain Disruption in Rural Uganda - Global Health Design Collaborative (Design Team)</p>
+                    <h4>Workstation</h4>
+                    <p>Designed inserted vial holders and dedicated workstation zones for vaccine preparation and administration. These features improved organization and supported standardized field procedures.</p>
+                    <h4>CAD Modeling</h4>
+                    <p>Created detailed 3D models and assemblies in SolidWorks to guide fabrication. Design iterations were informed by manufacturability and field usability constraints.</p>
+                    <h4>Thermal Performance Analysis</h4>
+                    <p>Conducted thermal analysis and experimental testing to compare insulation performance across multiple prototype iterations. Collected temperature data to evaluate design improvements.</p>
+                </div>
+            </div>
+
+            <!-- Gratnells Storage -->
+            <div class="project-card">
+                <img src="gratnells.jpg" alt="Gratnells Storage System" class="project-image">
+                <div class="project-content">
+                    <h3>Custom Gratnells Bin Storage System</h3>
+                    <p>Fabricated a Gratnells bin storage unit as part of a summer project for Sears think[box]. The goal was to create a space-efficient solution for organizing tools and materials within the makerspace.</p>
+                    <h4>VCarve</h4>
+                    <p>Created 2D layouts and toolpaths using VCarve, optimizing material usage and ensuring clean CNC machinability.</p>
+                    <h4>CNC Fabrication</h4>
+                    <p>Operated the Laguna CNC router to cut all parts, selecting appropriate feeds, speeds, and tooling for plywood panels.</p>
+                    <h4>Wood Shop Post-Processing</h4>
+                    <p>Performed sanding and finishing in the wood shop to ensure a clean final aesthetic.</p>
+                </div>
+            </div>
+
+            <!-- Bioplastic -->
+            <div class="project-card">
+                <img src="bioplastic.jpg" alt="Bioplastic Workshop" class="project-image">
+                <div class="project-content">
+                    <h3>Biodesign Club - Fully Biodegradable Plastic</h3>
+                    <h4>Agar-Agar Bioplastics</h4>
+                    <p>Led fabrication of fully biodegradable bioplastics using agar-agar and natural additives. Conducted material testing to assess water solubility and degradation behavior.</p>
+                    <h4>Fruit Peel Bioleather</h4>
+                    <p>Explored alternative biomaterials, including fruit peel–derived bioleather. Investigated their mechanical properties and feasibility for product design.</p>
+                </div>
+            </div>
+
+            <!-- Personal Projects Collection -->
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Personal Creative Projects</h3>
+                    
+                    <h4>Name Tag</h4>
+                    <img src="nametag.jpg" alt="Laser Cut Name Tag" class="gallery-image" style="width: 100%; height: 250px; object-fit: cover; margin: 15px 0;">
+                    <p>Custom Design in Adobe Illustrator + Epilog Laser cutter</p>
+                    
+                    <h4 style="margin-top: 30px;">Acrylic Lamp</h4>
+                    <img src="acrylic-lamp.jpg" alt="Acrylic Lamp" class="gallery-image" style="width: 100%; height: 250px; object-fit: cover; margin: 15px 0;">
+                    <p>CorelDraw Design + Epilog Laser cutter and simple circuit</p>
+                    
+                    <h4 style="margin-top: 30px;">Howl's Moving Castle Derby Car</h4>
+                    <img src="derby-car.jpg" alt="Howl's Moving Castle Derby Car" class="gallery-image" style="width: 100%; height: 250px; object-fit: cover; margin: 15px 0;">
+                    <p>3D Processing + 3D Printing</p>
+                    
+                    <h4 style="margin-top: 30px;">3D Printed Lamp</h4>
+                    <img src="3d-lamp.jpg" alt="3D Printed Lamp" class="gallery-image" style="width: 100%; height: 250px; object-fit: cover; margin: 15px 0;">
+                    <p>3D Processing + 3D Printing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Thank you for viewing this portfolio!</h2>
+        <div class="contact-info">
+            <p>📞 (216) 303-2868</p>
+            <p>✉️ <a href="mailto:elmaz.abliazova@gmail.com">elmaz.abliazova@gmail.com</a></p>
+            <p>✉️ <a href="mailto:exa349@case.edu">exa349@case.edu</a></p>
+            <p>🔗 <a href="https://www.linkedin.com/in/elmaz-abliazova/" target="_blank">LinkedIn Profile</a></p>
+        </div>
+    </section>
+
+    <script>
+        function scrollToAbout() {
+            document.getElementById('about').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        function scrollToProjects() {
+            document.getElementById('projects').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Add parallax effect to hero icons
+        document.addEventListener('mousemove', (e) => {
+            const icons = document.querySelectorAll('.icons');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            icons.forEach((icon, index) => {
+                const speed = (index + 1) * 20;
+                icon.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

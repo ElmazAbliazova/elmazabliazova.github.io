@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Elmaz Abliazova</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 50px 20px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 15px 30px;
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 80px;
+            margin-top: 50px;
+        }
+
+        .projects-header h1 {
+            font-size: 5rem;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .projects-header p {
+            font-size: 1.3rem;
+            color: #aaa;
+        }
+
+        .projects-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #fff;
+            box-shadow: 0 20px 50px rgba(255,255,255,0.15);
+        }
+
+        .project-thumbnail {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-thumbnail {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        .project-info h3 {
+            font-size: 1.8rem;
+            color: #ff4444;
+            margin-bottom: 15px;
+        }
+
+        .project-info p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .view-project {
+            display: inline-block;
+            margin-top: 20px;
+            color: #fff;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: 2px solid #ff4444;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .view-project {
+            background: #ff4444;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .projects-header h1 {
+                font-size: 3rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back to Portfolio</a>
+
+    <div class="projects-header">
+        <h1>My Projects</h1>
+        <p>Click on any project to see detailed information</p>
+    </div>
+
+    <div class="projects-grid">
+        <a href="project-stretcher.html" class="project-card">
+            <img src="stretcher.jpg" alt="Emergency Stretcher" class="project-thumbnail">
+            <div class="project-info">
+                <h3>Emergency Stretcher</h3>
+                <p>Portable, foldable stretcher designed for war zones with optimized weight and structural integrity.</p>
+                <span class="view-project">View Project →</span>
+            </div>
+        </a>
+
+        <a href="project-vaccine.html" class="project-card">
+            <img src="vaccine-carrier.jpg" alt="Vaccine Carrier" class="project-thumbnail">
+            <div class="project-info">
+                <h3>Vaccine Carrier</h3>
+                <p>Redesigned vaccine carrier minimizing cold chain disruption in rural Uganda.</p>
+                <span class="view-project">View Project →</span>
+            </div>
+        </a>
+
+        <a href="project-gratnells.html" class="project-card">
+            <img src="gratnells.jpg" alt="Gratnells Storage" class="project-thumbnail">
+            <div class="project-info">
+                <h3>Gratnells Storage System</h3>
+                <p>Custom CNC-fabricated storage solution for makerspace organization.</p>
+                <span class="view-project">View Project →</span>
+            </div>
+        </a>
+
+        <a href="project-bioplastic.html" class="project-card">
+            <img src="bioplastic.jpg" alt="Bioplastic" class="project-thumbnail">
+            <div class="project-info">
+                <h3>Biodegradable Bioplastics</h3>
+                <p>Fully biodegradable materials using agar-agar and fruit peel bioleather.</p>
+                <span class="view-project">View Project →</span>
+            </div>
+        </a>
+
+        <a href="project-personal.html" class="project-card">
+            <img src="nametag.jpg" alt="Personal Projects" class="project-thumbnail">
+            <div class="project-info">
+                <h3>Personal Creative Projects</h3>
+                <p>Collection of laser cutting, 3D printing, and creative fabrication projects.</p>
+                <span class="view-project">View Project →</span>
+            </div>
+        </a>
+    </div>
+</body>
+</html>

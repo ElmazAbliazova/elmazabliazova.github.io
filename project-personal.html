@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Creative Projects - Elmaz Abliazova</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 15px 30px;
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .project-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+        }
+
+        .project-title {
+            font-size: 3.5rem;
+            color: #ff4444;
+            margin-bottom: 20px;
+        }
+
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: #aaa;
+            margin-bottom: 50px;
+        }
+
+        /* Individual Project Section */
+        .mini-project {
+            margin-bottom: 80px;
+            padding-bottom: 60px;
+            border-bottom: 2px solid #333;
+        }
+
+        .mini-project:last-child {
+            border-bottom: none;
+        }
+
+        .mini-project h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .mini-project p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+
+        .mini-project-image {
+            width: 100%;
+            max-width: 700px;
+            height: 500px;
+            object-fit: cover;
+            margin: 20px auto;
+            display: block;
+            border: 3px solid #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mini-project-image:hover {
+            border-color: #fff;
+            transform: scale(1.02);
+        }
+
+        /* Image Grid for multiple images */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .grid-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border: 3px solid #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .grid-image:hover {
+            border-color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover {
+            color: #ff4444;
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.5rem;
+            }
+            .mini-project h2 {
+                font-size: 2rem;
+            }
+            .mini-project-image {
+                height: 350px;
+            }
+            .grid-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="projects.html" class="back-btn">← Back to Projects</a>
+
+    <div class="project-detail">
+        <h1 class="project-title">Personal Creative Projects</h1>
+        <p class="project-subtitle">A collection of laser cutting, 3D printing, and creative fabrication work</p>
+
+        <!-- Name Tag -->
+        <div class="mini-project">
+            <h2>Laser Cut Name Tag</h2>
+            <p>Custom design created in Adobe Illustrator and fabricated using the Epilog laser cutter. Features intricate floral patterns with multi-colored acrylic layers.</p>
+            <img src="nametag.jpg" alt="Laser Cut Name Tag" class="mini-project-image" onclick="openLightbox(this.src)">
+        </div>
+
+        <!-- Acrylic Lamp -->
+        <div class="mini-project">
+            <h2>Acrylic Lamp</h2>
+            <p>Designed in CorelDraw and created using Epilog laser cutter with a simple circuit for LED illumination. The etched pattern creates beautiful light diffusion.</p>
+            <img src="acrylic-lamp.jpg" alt="Acrylic Lamp" class="mini-project-image" onclick="openLightbox(this.src)">
+        </div>
+
+        <!-- Derby Car -->
+        <div class="mini-project">
+            <h2>Howl's Moving Castle Derby Car</h2>
+            <p>3D modeled and printed derby car inspired by Howl's Moving Castle. Combined 3D processing techniques with detailed assembly and finishing.</p>
+            <img src="derby-car.jpg" alt="Howl's Moving Castle Derby Car" class="mini-project-image" onclick="openLightbox(this.src)">
+        </div>
+
+        <!-- 3D Printed Lamp -->
+        <div class="mini-project">
+            <h2>3D Printed Lamp</h2>
+            <p>Designed using 3D processing software and fabricated through 3D printing. Features an organic, layered design that creates ambient lighting effects.</p>
+            <img src="3d-lamp.jpg" alt="3D Printed Lamp" class="mini-project-image" onclick="openLightbox(this.src)">
+        </div>
+
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script>
+        function openLightbox(imageSrc) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = imageSrc;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

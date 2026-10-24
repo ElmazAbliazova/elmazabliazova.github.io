@@ -298,7 +298,7 @@
         <div class="icons icon-measure">📏</div>
         <div class="icons icon-gear1">⚙️</div>
         <div class="icons icon-gear2">⚙️</div>
-        
+
         <div class="photo-collage">
             <!-- Note: Replace these src values with your actual image paths when uploading to GitHub -->
             <!-- Add hero-photo-2.jpg and hero-photo-3.jpg to your folder -->
@@ -306,12 +306,12 @@
             <img src="hero-photo-2.jpg" alt="Elmaz photo 2" class="hero-photo photo-2" draggable="true">
             <img src="hero-photo-3.jpg" alt="Elmaz photo 3" class="hero-photo photo-3" draggable="true">
         </div>
-        
+
         <div class="hero-content">
             <h1 class="portfolio-text">portfolio</h1>
             <div class="signature">Elmaz Abliazova</div>
         </div>
-        
+
         <div class="scroll-indicator" onclick="scrollToAbout()">
             <p>Scroll Down</p>
             <div class="arrow-down"></div>
@@ -322,13 +322,15 @@
     <section class="about" id="about">
         <div class="about-content">
             <h1>About Me</h1>
-            <p>I'm a second-year Biomedical Engineering student at Case Western Reserve University on the Biomechanics track, with a particular interest in prosthetics and orthotics.</p>
-            <p>I currently work at the Sears think[box] Makerspace, where I gain hands-on experience in design and fabrication while also training and teaching others to use the equipment safely and effectively.</p>
-            <p>I'm choosing a path at the intersection of engineering and medicine, but my curiosity constantly pushes me to explore far beyond it.</p>
-            
+            <p>I’m a third-year Biomedical Engineering student at CWRU with a focus on hardware design, advanced manufacturing, and hands-on engineering.</p>
+
+            <p>I enjoy working on physical projects, from CAD modeling to building and testing prototypes. Through my internship and work at the makerspace, I’ve applied my engineering knowledge to real projects and gained experience with different manufacturing processes.</p>
+
+            <p>I also take on leadership roles in student organizations, where I help organize projects and work with people from different disciplines.</p>
+
             <div class="button-group">
                 <a class="btn" href="projects.html">Projects</a>
-                <a class="btn" href="resume.pdf" target="_blank">Resume</a>
+                <a class="btn" href="Elmaz%20Abliazova%20Resume%20(1).pdf" target="_blank">Resume</a>
                 <a class="btn" href="https://www.linkedin.com/in/elmaz-abliazova/" target="_blank">LinkedIn</a>
             </div>
         </div>
@@ -356,11 +358,11 @@
             photo.addEventListener('mousedown', function(e) {
                 draggedElement = this;
                 draggedElement.classList.add('dragging');
-                
+
                 const rect = draggedElement.getBoundingClientRect();
                 offsetX = e.clientX - rect.left;
                 offsetY = e.clientY - rect.top;
-                
+
                 draggedElement.style.zIndex = 1000;
             });
         });
@@ -369,10 +371,10 @@
             if (draggedElement) {
                 const container = document.querySelector('.photo-collage');
                 const containerRect = container.getBoundingClientRect();
-                
+
                 let newX = e.clientX - containerRect.left - offsetX;
                 let newY = e.clientY - containerRect.top - offsetY;
-                
+
                 draggedElement.style.left = newX + 'px';
                 draggedElement.style.top = newY + 'px';
                 draggedElement.style.right = 'auto';
@@ -411,7 +413,7 @@
             const icons = document.querySelectorAll('.icons');
             const x = e.clientX / window.innerWidth;
             const y = e.clientY / window.innerHeight;
-            
+
             icons.forEach((icon, index) => {
                 const speed = (index + 1) * 20;
                 icon.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
